@@ -20,11 +20,11 @@ export default function App() {
     fetch('https://api2.binance.com/api/v3/ticker/24hr')
     .then(response => response.json())
     .then(data => {
-      const filteredData = data.filter((crypto) => {
+      const filteredData = data.filter((crypto,i,data) => {
         if( Object.keys(CRYPTO_NAMES).includes(crypto.symbol)) {
           return true
         }
-      })
+      }, false)
       setCoin(filteredData);
     })
   }, [])
